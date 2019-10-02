@@ -16,3 +16,21 @@ dependencies {
     // https://mvnrepository.com/artifact/io.gatling.highcharts/gatling-charts-highcharts
     testCompile group: 'io.gatling.highcharts', name: 'gatling-charts-highcharts', version: '3.2.1'
 }
+
+task testLoad(type: JavaExec) {
+    description = 'Test load with Gatling'
+    group = 'Load Test'
+    classpath = sourceSets.test.runtimeClasspath
+    jvmArgs = [
+            "-Dlogback.configurationFile=${logbackGatlingConfig()}"
+    ]
+    main = 'io.gatling.app.Gatling'
+    args = [
+            '--simulation', 'simulation.UserSimulation',
+            '--results-folder', "${buildDir}/gatling-results"
+    ]
+}
+
+def logbackGatlingConfig() {
+    return sourceSets.test.resources.find { it.name == 'logback-gatling.xml' };
+}
