@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'scala'
 }
 
 group 'com-demo'
@@ -12,5 +13,6 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/io.gatling.highcharts/gatling-charts-highcharts
+    testCompile group: 'io.gatling.highcharts', name: 'gatling-charts-highcharts', version: '3.2.1'
 }
