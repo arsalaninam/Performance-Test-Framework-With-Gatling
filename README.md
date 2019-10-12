@@ -14,7 +14,6 @@ These instructions will get you a copy of the project up and running on your loc
 ### Installation
 
 Run the following command in Terminal and build the project. It will automatically download all the required dependencies.
-
 ```sh
 $ gradle build
 ```
@@ -22,18 +21,33 @@ $ gradle build
 If the build is successful. All the required dependencies are installed successfully.
 ### Running the tests
 
-Run the following command in Terminal to execute a Java Task. An example of Gatling testLoad task in Gradle is given below.
+Add Simulation class path in build.gradle file in order to run the Simulation.
+```sh
+$ '--simulation', 'simulation.CreateUserSimulation'
+```
 
+Run the following command in Terminal to clean the build directory. To avoid conflicts, make sure to execute this command everytime before you run 'gradlew testLoad' command.
+```sh
+$ gradlew clean build
+```
+
+Run the following command in Terminal to execute a Java Task.
 ```sh
 $ gradlew testLoad
 ```
 
+### View Response JSON files
+
+You can find the created response JSON files in the following directory of the Project.
+```sh
+\build\reports\resource
+```
+These files are generated at runtime. These files can be used as inputs for other APIs.
+
 ### Validating Reports
 
 You can find the HTML reports of the executed simulations in the following directory of the Project.
-
 ```sh
 \build\gatling-results
 ```
-
 Under the gatling-results directory, there will be multiple test simulation folders. Open the related simulation folder and open 'index.html' file.
