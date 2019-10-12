@@ -4,6 +4,9 @@ import java.io.{BufferedWriter, File, FileWriter}
 
 object FileUtil {
 
+  /*
+  This method will write down the desired response in a new file.
+   */
   def writeUserData(lines: String): Unit = {
     var file = new File(Constants.SERVICE_JSON_BASE_PATH)
     if (!file.exists()) {
@@ -15,6 +18,5 @@ object FileUtil {
     bw.write(lines)
     bw.close()
   }
-
 
 }
