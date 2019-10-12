@@ -15,6 +15,9 @@ repositories {
 dependencies {
     // https://mvnrepository.com/artifact/io.gatling.highcharts/gatling-charts-highcharts
     testCompile group: 'io.gatling.highcharts', name: 'gatling-charts-highcharts', version: '3.2.1'
+
+    // https://mvnrepository.com/artifact/org.json/json
+    compile group: 'org.json', name: 'json', version: '20090211'
 }
 
 task testLoad(type: JavaExec) {
@@ -26,7 +29,7 @@ task testLoad(type: JavaExec) {
     ]
     main = 'io.gatling.app.Gatling'
     args = [
-            '--simulation', 'simulation.UserSimulation',
+            '--simulation', 'simulation.CreateUserSimulation',
             '--results-folder', "${buildDir}/gatling-results"
     ]
 }
