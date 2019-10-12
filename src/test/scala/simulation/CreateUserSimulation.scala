@@ -6,20 +6,20 @@ import io.gatling.http.Predef._
 import io.gatling.http.protocol.HttpProtocolBuilder
 import org.json.JSONObject
 import org.json.JSONArray
-import util.{Constants, FileUtil}
+import util.{PropertiesReader, Constants, FileUtil}
 
 import scala.util.Random
 
-class CreateUserSimulation extends Simulation {
+class CreateUserSimulation extends Simulation{
 
   private val httpProtocol: HttpProtocolBuilder = http
-    .baseUrl(Constants.BASE_URL)
+    .baseUrl(PropertiesReader.getProperty(Constants.BASE_URL))
     .acceptHeader(Constants.JSON_CONTENT_TYPE)
 
   val userCreateRequest: String = "User Create Request"
   var userCreateResponseJson = new JSONArray
   val nameFeeder = Iterator.continually(
-    Map("name" -> Random.alphanumeric.take(20).mkString),
+    Map("name" -> Random.alphanumeric.filter(_.isLetter).take(5).mkString),
   )
 
   val createUserScenario: ScenarioBuilder = scenario(Constants.CREATE_USER_SCENARIO_NAME)
@@ -39,7 +39,7 @@ class CreateUserSimulation extends Simulation {
 
   setUp(
     createUserScenario.inject(
-      constantUsersPerSec(Constants.USER_REQUESTS_PER_SECOND) during (3)
+      constantUsersPerSec(Constants.USER_REQUESTS_PER_SECOND) during(3)
     )
   ).protocols(httpProtocol)
 
