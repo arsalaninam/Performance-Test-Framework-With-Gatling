@@ -9,7 +9,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 * [Java 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) - Java Dev Kit
-* [Gradle](https://gradle.org/install/) - Dependency Management
+* [Gradle](https://gradle.org/install/) - Dependency Manager
 
 ### Installation
 
@@ -28,7 +28,7 @@ $ '--simulation', 'simulation.CreateUserSimulation'
 
 Run the following command in Terminal to clean the build directory. To avoid conflicts, make sure to execute this command everytime before you run 'gradlew testLoad' command.
 ```sh
-$ gradlew clean build
+$ gradle clean build
 ```
 
 Run the following command in Terminal to execute a Java Task.
@@ -42,12 +42,12 @@ You can find the created response JSON files in the following directory of the P
 ```sh
 \build\reports\resource
 ```
-These files are generated at runtime. These files can be used as inputs for other APIs.
+These files are generated at runtime. The data in these files can be used as inputs for other APIs.
 
-### Validating Reports
+### Validating Gatling Reports
 
 You can find the HTML reports of the executed simulations in the following directory of the Project.
 ```sh
 \build\gatling-results
 ```
-Under the gatling-results directory, there will be multiple test simulation folders. Open the related simulation folder and open 'index.html' file.
+Under the gatling-results directory, go to simulation folder and open ‘index.html’ file.
